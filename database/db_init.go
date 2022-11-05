@@ -12,11 +12,12 @@ import (
 var DBQuery *gorm.DB
 
 func DatabaseMain() {
-	dsn, err := gorm.Open(mysql.Open("root:@tcp(localhost)/meditation"), &gorm.Config{})
+	dsn, err := gorm.Open(mysql.Open("root:@tcp(localhost:3306)/meditation"), &gorm.Config{})
 
 	if err != nil {
 		fmt.Printf("ERROR: %v", err)
 	}
+	fmt.Println(dsn)
 
 	DBQuery = dsn
 	MigrationModel()
