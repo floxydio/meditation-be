@@ -16,8 +16,11 @@ func main() {
 
 	database.DatabaseMain()
 
+	app.Static("/storage/album", "./assets/image")
 	app.Static("/storage/music", "./assets/music")
+
 	app.Get("/music", controllers.GetMusic)
+	app.Get("/music-category/:category", controllers.GetMusicCategory)
 
 	app.Listen(":3000")
 
